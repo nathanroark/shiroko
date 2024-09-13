@@ -6,6 +6,7 @@
     "lint": "eslint .",
     "shadcn-ui": "bunx shadcn-ui",
     "postshadcn-ui": "bun scripts/shadcn-ui.ts",
+    "set-shadcn-ui": "bun scripts/shadcn-ui.ts",
     "test": "vitest run",
     "test:unit": "vitest run",
     "test:watch": "vitest watch"

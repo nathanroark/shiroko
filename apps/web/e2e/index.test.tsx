@@ -1,7 +1,15 @@
 import { test, expect } from '@playwright/test'
 
-test('/login to have form contain username', async ({ page }) => {
-  await page.goto('http://localhost:3000/login')
+test('should display the count button and HMR text in the card', async ({
+  page
+}) => {
+  await page.goto('http://localhost:5173/')
 
-  await expect(page.locator('form')).toContainText('Username')
+  // Check that the card contains the button with the initial count text
+  await expect(page.locator('.card button')).toHaveText('count is 0')
+
+  // Check that the card contains the specific instructional text
+  await expect(page.locator('.card')).toContainText(
+    'Edit src/App.tsx and save to test HMR'
+  )
 })
