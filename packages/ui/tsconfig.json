@@ -1,0 +1,9 @@
+{
+  "extends": "config/typescript/react-library.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "ESNext"
+  },
+  "include": ["src", "eslint.config.js", "test"],
+  "exclude": ["node_modules", "dist"]
+}

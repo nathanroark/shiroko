@@ -1,0 +1,20 @@
+{
+  "name": "benchmark",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "benchmark": "bun bench-simple.ts",
+    "benchmark2": "bun bench-simple-post.ts",
+    "kill-port": "kill-port 3000"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/kill-port": "^2.0.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "kill-port": "^2.0.1"
+  }
+}
