@@ -21,8 +21,8 @@
     "paths": {
       "@web/*": ["apps/web/src/*"],
       "@web/app/*": ["apps/web/src/app/*"],
-      "@web/components": ["apps/web/src/layouts/index.tsx"],
-      "@web/components/*": ["apps/web/src/layouts/*"],
+      "@web/components": ["apps/web/src/components/index.tsx"],
+      "@web/components/*": ["apps/web/src/components/*"],
       "@web/stores": ["apps/web/src/stores/index.ts"],
       "@web/stores/*": ["apps/web/src/stores/*"],
       "@web/libs": ["apps/web/src/libs/index.ts"],

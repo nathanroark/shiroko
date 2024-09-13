@@ -6,11 +6,7 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint .",
-    "test": "bun run test:unit && bun run test:e2e",
-    "test:watch": "vitest watch",
-    "test:unit": "vitest run",
-    "test:e2e": "bun scripts/playwright.ts"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
