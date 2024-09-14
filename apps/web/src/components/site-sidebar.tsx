@@ -4,6 +4,7 @@ import { Link, useLocation } from '@tanstack/react-router'
 import { Bot, Radio, BookA, Wrench, Home } from '@ui/icons'
 import { useEffect, useState } from 'react'
 import { useSpring, animated } from '@react-spring/web'
+import { TooltipTrigger, TooltipContent, Tooltip } from '@ui'
 
 const links = [
   {
@@ -54,11 +55,11 @@ export function Sidebar() {
 
   const { translateY } = useSpring({
     translateY: activeIndex * 52,
-    config: { tension: 210, friction: 20, clamp: true }
+    config: { tension: 210, friction: 20 }
   })
 
   return (
-    <header className="fixed left-0 z-20 h-full w-14 bg-white dark:bg-black">
+    <div className="fixed left-0 z-20 h-full w-14 bg-white dark:bg-black">
       <nav className="flex flex-col items-center text-sm gap-2">
         <animated.div
           style={{ transform: translateY.to((y) => `translateY(${y}px)`) }}
@@ -66,17 +67,22 @@ export function Sidebar() {
         />
         {links.map((link) => (
           <Link key={'sidebar-link-' + link.name} to={link.slug}>
-            <div
-              key={'sidebar-link-' + link.name}
-              className="hover:bg-muted transition-all duration-200 rounded p-3"
-            >
-              <div className="size-5 items-center flex justify-center">
-                {link.icon}
-              </div>
-            </div>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div
+                  key={'sidebar-link-' + link.name}
+                  className="hover:bg-muted transition-all duration-200 rounded p-3"
+                >
+                  <div className="size-5 items-center flex justify-center">
+                    {link.icon}
+                  </div>
+                </div>
+              </TooltipTrigger>
+              <TooltipContent side="right">{link.name}</TooltipContent>
+            </Tooltip>
           </Link>
         ))}
       </nav>
-    </header>
+    </div>
   )
 }

@@ -43,7 +43,8 @@
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
     --primary: 221.2 83.2% 53.3%; /* blue 600 */
-    --primary-foreground: 240 5.9% 10%;
+    /* --primary-foreground: 240 5.9% 10%; */ /* original dark one from zinc shadcn theme */
+    --primary-foreground: 0 0% 98%; /* using the light mode primary foreground color until it doesnt work someowhere */
     --secondary: 221.2 83.2% 53.3%; /* blue 600 */
     --secondary-foreground: 0 0% 98%;
     --muted: 240 3.7% 15.9%;
