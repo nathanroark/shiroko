@@ -62,9 +62,7 @@ function Index() {
                     {link.name}
                   </span>
                 </CardHeader>
-                <CardDescription>
-                  <p>{link.description}</p>
-                </CardDescription>
+                <CardDescription>{link.description}</CardDescription>
               </CardContent>
             </Link>
           </Card>

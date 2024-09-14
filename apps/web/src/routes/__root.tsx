@@ -15,7 +15,7 @@ export const Route = createRootRoute({
       {/*   </Link> */}
       {/* </div> */}
       <Topbar />
-      <div className="flex pt-12 pl-12">
+      <div className="flex pt-12 pl-14">
         <Sidebar />
         <Outlet />
       </div>

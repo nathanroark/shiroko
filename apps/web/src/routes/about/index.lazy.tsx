@@ -7,7 +7,6 @@ export const Route = createLazyFileRoute('/about/')({
 })
 
 function About() {
-  // Using the useQuery hook to fetch data
   const { data, error, isLoading } = useQuery({
     queryKey: ['shiroko'],
     queryFn: async () => {
@@ -16,18 +15,14 @@ function About() {
     }
   })
 
-  // Handle loading state
-  if (isLoading) return <h1>Loading...</h1>
+  if (isLoading) return <></> // TODO: Add a loading spinner
+  if (error) return <div>Ooopsie woopsie! Something went wrong...</div>
+  if (!data) return <div>Nothing to see here...</div>
 
-  // Handle error state
-  if (error) return <h1>Something went bad</h1>
-
-  // Destructure the data if available
-  if (!data) return null // safeguard for null data
   const { id, name, series, picture, developer } = data
 
   return (
-    <div className="flex justify-center items-center w-full pt-12 bg-background">
+    <div className="flex justify-center items-center w-full pt-12">
       <div className="flex gap-6 max-w-sm">
         <header className="flex flex-col justify-between">
           <div className="flex flex-col gap-1 m-auto">

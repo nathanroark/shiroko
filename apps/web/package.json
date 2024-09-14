@@ -14,6 +14,7 @@
     "test:e2e": "bun scripts/playwright.ts"
   },
   "dependencies": {
+    "@react-spring/web": "^9.7.4",
     "@tanstack/react-query": "^5.56.2",
     "@tanstack/react-router": "^1.57.13",
     "libs": "workspace:*",

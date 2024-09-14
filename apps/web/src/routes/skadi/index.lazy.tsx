@@ -7,7 +7,6 @@ export const Route = createLazyFileRoute('/skadi/')({
 })
 
 function Skadi() {
-  // Using the useQuery hook to fetch data
   const { data, error, isLoading } = useQuery({
     queryKey: ['skadi'],
     queryFn: async () => {
@@ -16,14 +15,10 @@ function Skadi() {
     }
   })
 
-  // Handle loading state
-  if (isLoading) return <h1>Loading...</h1>
+  if (isLoading) return <></> // TODO: Add a loading spinner
+  if (error) return <div>Ooopsie woopsie! Something went wrong...</div>
+  if (!data) return <div>Nothing to see here...</div>
 
-  // Handle error state
-  if (error) return <h1>Something went bad</h1>
-
-  // Destructure the data if available
-  if (!data) return null // safeguard for null data
   const { id, name, cover, type, license } = data
 
   return (
