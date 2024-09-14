@@ -1,3 +1,5 @@
+'use server'
+
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ThemeProvider } from '@web/components/theme-provider'

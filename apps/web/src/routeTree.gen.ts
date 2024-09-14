@@ -17,18 +17,52 @@ import { Route as rootRoute } from './routes/__root'
 // Create Virtual Routes
 
 const IndexLazyImport = createFileRoute('/')()
+const SkadiIndexLazyImport = createFileRoute('/skadi/')()
+const ShirokoIndexLazyImport = createFileRoute('/shiroko/')()
+const MissionBuilderIndexLazyImport = createFileRoute('/mission-builder/')()
+const EmittersIndexLazyImport = createFileRoute('/emitters/')()
+const AgentsIndexLazyImport = createFileRoute('/agents/')()
 const AboutIndexLazyImport = createFileRoute('/about/')()
 
 // Create/Update Routes
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const SkadiIndexLazyRoute = SkadiIndexLazyImport.update({
+  path: '/skadi/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/skadi/index.lazy').then((d) => d.Route))
+
+const ShirokoIndexLazyRoute = ShirokoIndexLazyImport.update({
+  path: '/shiroko/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/shiroko/index.lazy').then((d) => d.Route))
+
+const MissionBuilderIndexLazyRoute = MissionBuilderIndexLazyImport.update({
+  path: '/mission-builder/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/mission-builder/index.lazy').then((d) => d.Route),
+)
+
+const EmittersIndexLazyRoute = EmittersIndexLazyImport.update({
+  path: '/emitters/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/emitters/index.lazy').then((d) => d.Route),
+)
+
+const AgentsIndexLazyRoute = AgentsIndexLazyImport.update({
+  path: '/agents/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/agents/index.lazy').then((d) => d.Route))
 
 const AboutIndexLazyRoute = AboutIndexLazyImport.update({
   path: '/about/',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/about/index.lazy').then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
@@ -49,6 +83,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutIndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/agents/': {
+      id: '/agents/'
+      path: '/agents'
+      fullPath: '/agents'
+      preLoaderRoute: typeof AgentsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/emitters/': {
+      id: '/emitters/'
+      path: '/emitters'
+      fullPath: '/emitters'
+      preLoaderRoute: typeof EmittersIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/mission-builder/': {
+      id: '/mission-builder/'
+      path: '/mission-builder'
+      fullPath: '/mission-builder'
+      preLoaderRoute: typeof MissionBuilderIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/shiroko/': {
+      id: '/shiroko/'
+      path: '/shiroko'
+      fullPath: '/shiroko'
+      preLoaderRoute: typeof ShirokoIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/skadi/': {
+      id: '/skadi/'
+      path: '/skadi'
+      fullPath: '/skadi'
+      preLoaderRoute: typeof SkadiIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -57,36 +126,83 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/about': typeof AboutIndexLazyRoute
+  '/agents': typeof AgentsIndexLazyRoute
+  '/emitters': typeof EmittersIndexLazyRoute
+  '/mission-builder': typeof MissionBuilderIndexLazyRoute
+  '/shiroko': typeof ShirokoIndexLazyRoute
+  '/skadi': typeof SkadiIndexLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/about': typeof AboutIndexLazyRoute
+  '/agents': typeof AgentsIndexLazyRoute
+  '/emitters': typeof EmittersIndexLazyRoute
+  '/mission-builder': typeof MissionBuilderIndexLazyRoute
+  '/shiroko': typeof ShirokoIndexLazyRoute
+  '/skadi': typeof SkadiIndexLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
   '/about/': typeof AboutIndexLazyRoute
+  '/agents/': typeof AgentsIndexLazyRoute
+  '/emitters/': typeof EmittersIndexLazyRoute
+  '/mission-builder/': typeof MissionBuilderIndexLazyRoute
+  '/shiroko/': typeof ShirokoIndexLazyRoute
+  '/skadi/': typeof SkadiIndexLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/agents'
+    | '/emitters'
+    | '/mission-builder'
+    | '/shiroko'
+    | '/skadi'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about/'
+  to:
+    | '/'
+    | '/about'
+    | '/agents'
+    | '/emitters'
+    | '/mission-builder'
+    | '/shiroko'
+    | '/skadi'
+  id:
+    | '__root__'
+    | '/'
+    | '/about/'
+    | '/agents/'
+    | '/emitters/'
+    | '/mission-builder/'
+    | '/shiroko/'
+    | '/skadi/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   AboutIndexLazyRoute: typeof AboutIndexLazyRoute
+  AgentsIndexLazyRoute: typeof AgentsIndexLazyRoute
+  EmittersIndexLazyRoute: typeof EmittersIndexLazyRoute
+  MissionBuilderIndexLazyRoute: typeof MissionBuilderIndexLazyRoute
+  ShirokoIndexLazyRoute: typeof ShirokoIndexLazyRoute
+  SkadiIndexLazyRoute: typeof SkadiIndexLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
-  AboutIndexLazyRoute: AboutIndexLazyRoute
+  AboutIndexLazyRoute: AboutIndexLazyRoute,
+  AgentsIndexLazyRoute: AgentsIndexLazyRoute,
+  EmittersIndexLazyRoute: EmittersIndexLazyRoute,
+  MissionBuilderIndexLazyRoute: MissionBuilderIndexLazyRoute,
+  ShirokoIndexLazyRoute: ShirokoIndexLazyRoute,
+  SkadiIndexLazyRoute: SkadiIndexLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -102,7 +218,12 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/about/"
+        "/about/",
+        "/agents/",
+        "/emitters/",
+        "/mission-builder/",
+        "/shiroko/",
+        "/skadi/"
       ]
     },
     "/": {
@@ -110,6 +231,21 @@ export const routeTree = rootRoute
     },
     "/about/": {
       "filePath": "about/index.lazy.tsx"
+    },
+    "/agents/": {
+      "filePath": "agents/index.lazy.tsx"
+    },
+    "/emitters/": {
+      "filePath": "emitters/index.lazy.tsx"
+    },
+    "/mission-builder/": {
+      "filePath": "mission-builder/index.lazy.tsx"
+    },
+    "/shiroko/": {
+      "filePath": "shiroko/index.lazy.tsx"
+    },
+    "/skadi/": {
+      "filePath": "skadi/index.lazy.tsx"
     }
   }
 }

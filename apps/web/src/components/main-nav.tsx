@@ -6,7 +6,7 @@ import { Logo } from '@ui/icons'
 
 export function MainNav() {
   return (
-    <div className="bg-chart-5 mr-4 hidden md:flex">
+    <div className="mr-4 hidden md:flex">
       <Link to="/" className=" mr-4 flex items-center space-x-2 lg:mr-6">
         <Logo className="size-5 opacity-90" />
         <span className="hidden text-lg font-bold md:inline-block">Chiaki</span>

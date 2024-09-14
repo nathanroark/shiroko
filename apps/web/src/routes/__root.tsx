@@ -4,7 +4,7 @@ import { SiteHeader } from '@web/components/site-header'
 
 export const Route = createRootRoute({
   component: () => (
-    <div className="bg-background text-primary h-screen">
+    <div className="bg-background text-foreground h-screen">
       {/* <div className="p-2 flex gap-2"> */}
       {/*   <Link to="/" className="[&.active]:font-bold"> */}
       {/*     Home */}
@@ -14,7 +14,6 @@ export const Route = createRootRoute({
       {/*   </Link> */}
       {/* </div> */}
       <SiteHeader />
-      <hr />
       <Outlet />
       <TanStackRouterDevtools />
     </div>
