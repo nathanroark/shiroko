@@ -46,7 +46,10 @@ function Index() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {links.map((link) => (
-          <Card className="hover:border-primary/50 transition-colors duration-200">
+          <Card
+            key={'home-link-' + link.name}
+            className="hover:border-primary/50 transition-colors duration-200"
+          >
             <Link to={link.slug}>
               <CardContent>
                 <CardHeader className="flex flex-row gap-4">

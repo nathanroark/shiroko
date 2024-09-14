@@ -2,7 +2,7 @@
 
 import { ThemeProvider } from '../components/theme-provider'
 import type { ReactNode } from 'react'
-import '@web/global.css'
+import '../global.css'
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

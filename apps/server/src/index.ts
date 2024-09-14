@@ -4,12 +4,16 @@ import { healthRoutes } from '@server/routes/health'
 import { nendoroidRoutes } from '@server/routes/nendoroid'
 import { authRoutes } from '@server/routes/auth'
 import { trackRoutes } from '@server/routes/tracks'
+import { animeRoutes } from '@server/routes/shiroko'
+import cors from '@elysiajs/cors'
 
 export const app = new Elysia()
+  .use(cors())
   .use(healthRoutes)
   .use(nendoroidRoutes)
   .use(authRoutes)
   .use(trackRoutes)
+  .use(animeRoutes)
   .get('/', 'ok')
   .use(
     staticPlugin({

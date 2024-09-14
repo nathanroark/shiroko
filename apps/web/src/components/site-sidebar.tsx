@@ -1,9 +1,15 @@
 'use client'
 
 import { Link } from '@tanstack/react-router'
-import { Bot, Radio, BookA, Wrench } from '@ui/icons'
+import { Bot, Radio, BookA, Wrench, Home } from '@ui/icons'
 
 const links = [
+  {
+    slug: '/',
+    name: 'Home',
+    description: 'Overview of Chiaki',
+    icon: <Home />
+  },
   {
     slug: '/agents',
     name: 'Agents',
@@ -34,10 +40,13 @@ const links = [
 
 export function Sidebar() {
   return (
-    <header className="sticky left-0 z-50 h-[calc(100vh-3rem)] w-12 bg-white dark:bg-black">
+    <header className="fixed left-0 z-20 h-full w-12 bg-white dark:bg-black">
       <nav className="flex flex-col items-center text-sm gap-2">
         {links.map((link) => (
-          <div className="hover:bg-muted transition-all duration-200 rounded py-3 px-2">
+          <div
+            key={'sidebar-link-' + link.name}
+            className="hover:bg-muted transition-all duration-200 rounded py-3 px-2"
+          >
             <Link to={link.slug}>
               <div className="size-5 items-center flex justify-center">
                 {link.icon}
