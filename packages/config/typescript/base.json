@@ -20,7 +20,8 @@
     "baseUrl": "../../../",
     "paths": {
       "@web/*": ["apps/web/src/*"],
-      "@web/app/*": ["apps/web/src/app/*"],
+      "@web/routes/*": ["apps/web/src/routes/*"],
+      "@web/styles/*": ["apps/web/src/styles/*"],
       "@web/components": ["apps/web/src/components/index.tsx"],
       "@web/components/*": ["apps/web/src/components/*"],
       "@web/stores": ["apps/web/src/stores/index.ts"],
@@ -37,6 +38,8 @@
       "@ui/layouts/*": ["packages/ui/src/layouts/*"],
       "@ui/ui": ["packages/ui/src/ui/index.tsx"],
       "@ui/ui/*": ["packages/ui/src/ui/*"],
+      "@ui/icons": ["packages/ui/src/icons/index.tsx"],
+      "@ui/icons/*": ["packages/ui/src/icons/*"],
       "@server": ["apps/server/src/index.ts"],
       "@server/*": ["apps/server/src/*"],
       "@libs": ["packages/libs/src/index.ts"],

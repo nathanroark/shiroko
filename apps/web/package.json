@@ -14,13 +14,16 @@
     "test:e2e": "bun scripts/playwright.ts"
   },
   "dependencies": {
+    "@tanstack/react-router": "^1.57.13",
     "libs": "workspace:*",
-    "ui": "workspace:*",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "ui": "workspace:*"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
+    "@tanstack/router-devtools": "^1.57.13",
+    "@tanstack/router-plugin": "^1.57.13",
     "@types/node": "^22.5.4",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
