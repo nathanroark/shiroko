@@ -3,7 +3,6 @@
 <img width="1840" alt="Screenshot 2024-09-14 at 6 54 08 PM" src="https://github.com/user-attachments/assets/9ba0e715-7974-4bd2-8398-47fa741aa019">
 <img width="1840" alt="Screenshot 2024-09-14 at 6 54 13 PM" src="https://github.com/user-attachments/assets/ff6d8c4b-7fc9-42ca-8c61-d45d157c84be">
 
-
 ## Turborepo Readme
 
 This is an official starter Turborepo.

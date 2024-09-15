@@ -1,5 +1,5 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
-import { Card, CardContent, CardHeader, CardTitle, Separator } from '@ui'
+import { Card, CardContent, CardHeader, CardTitle } from '@ui'
 
 export const Route = createLazyFileRoute('/risk-information-sheet/')({
   component: () => (
@@ -15,21 +15,16 @@ export const Route = createLazyFileRoute('/risk-information-sheet/')({
         'Users could be resistant to changing their routines or adopting new technology. They may tend to perfer traditional security methods over any new system.',
         'Users may have a general distrust in the reliability of technology. This may lead to them not want to adopt the system over fear of it actually worsening their security or quality of life.'
       ]}
-      mitigationMonitoring={
-        [
-          // TODO: Write these out
-          // 'Invest in UX research to simplify the interface and make it more intuitive, with a focus on common tasks that users are expected to perform.',
-          // 'Develop comprehensive training materials, including step-by-step guides, video tutorials, and FAQs. Conduct webinars or live training sessions to engage users directly.',
-          // 'Implement a feedback loop where users can easily report issues or suggestions directly through the app. Regularly review and address common concerns.',
-          // 'Clearly communicate the security measures in place to protect user data, including data encryption, access controls, and privacy policies. Include this information in onboarding materials.'
-        ]
-      }
+      mitigationMonitoring={[
+        'Conduct user testing and feedback sessions to identify pain points and areas of confusion. Use this data to refine the interface and improve user onboarding materials and documentation.',
+        'Be as open and transparent as possible about data handling practices. Clearly communicate the measures in place to protect user data and privacy.',
+        'Possibly provide users ownership over their own data, allowing them to control what data is collected or even give a self hosted option.',
+        'Implement a feedback loop where users can easily report issues or suggestions directly through the app. Regularly review and address common concerns and comments.'
+      ]}
       managementContingencyPlan={{
-        plan: '',
-        trigger: ''
-        // plan: 'If feedback indicates more than 30% of users are dissatisfied or resistant, initiate an intensive support phase. This includes one-on-one onboarding sessions, enhanced customer support availability, and the introduction of incentives (e.g., discounts, extended warranties) to encourage adoption.',
-        // trigger:
-        //   'The contingency plan will be activated if the negative feedback threshold is met within the first month of the system launch or if there is a noticeable decline in system engagement metrics (e.g., daily active users dropping below 50% of initial adopters).'
+        plan: 'Read carefully into the reason for refunds and respond accordingly, these are likely due to the system malfunctioning or having poor user experience. If the reviews are negative, we will need to address the comments from the reviews and attempt to reach out to the reviewers to see what else we could improve on to ensure their next review would be much more positive',
+        trigger:
+          'If 10% of products are refunded after installation or if at least 30% of reviews that are coming from the tech communities that we are tageting are negative.'
       }}
       currentStatus="09/15/24: Risk identified."
       originator="N. Roark"
@@ -69,90 +64,84 @@ function RiskInfoSheet({
   assigned
 }: RiskInfoSheetProps) {
   return (
-    <Card className="w-full max-w-4xl mx-auto">
-      <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center">
-          Risk information sheet
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="grid grid-cols-4 gap-2 text-sm">
-          <div className="border border-border p-2 rounded-md">
-            <strong>Risk ID:</strong> {riskId}
-          </div>
-          <div className="border border-border p-2 rounded-md">
-            <strong>Date:</strong> {date}
-          </div>
-          <div className="border border-border p-2 rounded-md">
-            <strong>Prob:</strong> {prob}
-          </div>
-          <div className="border border-border p-2 rounded-md">
-            <strong>Impact:</strong> {impact}
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <strong>Description:</strong>
-          <p className="text-sm">{description}</p>
-        </div>
-
-        <Separator />
-
-        <div className="space-y-2">
-          <strong>Refinement/context:</strong>
-          {refinementContext.map((item, index) => (
-            <div key={'refinementContext' + index} className="flex flex-row">
-              <div className="text-sm w-[15%]">Subcondition {index + 1}: </div>
-              <div className="text-sm w-full">{item}</div>
+    <div className="pt-4 w-full">
+      <Card className="w-full max-w-4xl mx-auto">
+        <CardHeader className="bg-black/15 dark:bg-black/50 rounded-md p-4 m-1 mb-4">
+          <CardTitle className="text-2xl font-bold text-center">
+            Risk information sheet
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4 px-1">
+          <div className="grid grid-cols-4 gap-2 text-sm">
+            <div className="border border-border p-2 rounded-md">
+              <strong>Risk ID:</strong> {riskId}
             </div>
-          ))}
-        </div>
+            <div className="border border-border p-2 rounded-md">
+              <strong>Date:</strong> {date}
+            </div>
+            <div className="border border-border p-2 rounded-md">
+              <strong>Prob:</strong> {prob}
+            </div>
+            <div className="border border-border p-2 rounded-md">
+              <strong>Impact:</strong> {impact}
+            </div>
+          </div>
 
-        <Separator />
+          <div className="space-y-2 border border-border p-2 rounded-md">
+            <strong>Description:</strong>
+            <p className="text-sm">{description}</p>
+          </div>
 
-        <div className="space-y-2">
-          <strong>Mitigation/monitoring:</strong>
-          <ol className="list-decimal list-inside text-sm">
-            {mitigationMonitoring.map((item, index) => (
-              <li
-                key={'mitigationMonitoring' + index}
-                className="flex flex-row"
-              >
-                <div className="text-sm w-[3%]">{index + 1}. </div>
+          <div className="space-y-2 border border-border p-2 rounded-md">
+            <strong>Refinement/context:</strong>
+            {refinementContext.map((item, index) => (
+              <div key={'refinementContext' + index} className="flex flex-row">
+                <div className="text-sm w-[15%]">
+                  Subcondition {index + 1}:{' '}
+                </div>
                 <div className="text-sm w-full">{item}</div>
-              </li>
+              </div>
             ))}
-          </ol>
-        </div>
-
-        <Separator />
-
-        <div className="space-y-2">
-          <strong>Management/contingency plan/trigger:</strong>
-          <p className="text-sm">{managementContingencyPlan.plan}</p>
-          <p className="text-sm">
-            <strong>Trigger:</strong> {managementContingencyPlan.trigger}
-          </p>
-        </div>
-
-        <Separator />
-
-        <div className="space-y-2">
-          <strong>Current status:</strong>
-          <p className="text-sm">{currentStatus}</p>
-        </div>
-
-        <Separator />
-
-        <div className="grid grid-cols-2 gap-2 text-sm">
-          <div className="border border-border p-2 rounded-md">
-            <strong>Originator:</strong> {originator}
           </div>
-          <div className="border border-border p-2 rounded-md">
-            <strong>Assigned:</strong> {assigned}
+
+          <div className="space-y-2 border border-border p-2 rounded-md">
+            <strong>Mitigation/monitoring:</strong>
+            <ol className="list-decimal list-inside text-sm">
+              {mitigationMonitoring.map((item, index) => (
+                <li
+                  key={'mitigationMonitoring' + index}
+                  className="flex flex-row"
+                >
+                  <div className="text-sm w-[3%]">{index + 1}. </div>
+                  <div className="text-sm w-full">{item}</div>
+                </li>
+              ))}
+            </ol>
           </div>
-        </div>
-      </CardContent>
-    </Card>
+
+          <div className="space-y-2 border border-border p-2 rounded-md">
+            <strong>Management/contingency plan/trigger:</strong>
+            <p className="text-sm">{managementContingencyPlan.plan}</p>
+            <p className="text-sm">
+              <strong>Trigger:</strong> {managementContingencyPlan.trigger}
+            </p>
+          </div>
+
+          <div className="space-y-2 border border-border p-2 rounded-md">
+            <strong>Current status:</strong>
+            <p className="text-sm">{currentStatus}</p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2 text-sm">
+            <div className="border border-border p-2 rounded-md">
+              <strong>Originator:</strong> {originator}
+            </div>
+            <div className="border border-border p-2 rounded-md">
+              <strong>Assigned:</strong> {assigned}
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   )
 }

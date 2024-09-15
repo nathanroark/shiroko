@@ -19,7 +19,7 @@ import { Route as rootRoute } from './routes/__root'
 const IndexLazyImport = createFileRoute('/')()
 const SkadiIndexLazyImport = createFileRoute('/skadi/')()
 const RiskInformationSheetIndexLazyImport = createFileRoute(
-  '/risk-information-sheet/',
+  '/risk-information-sheet/'
 )()
 const MissionBuilderIndexLazyImport = createFileRoute('/mission-builder/')()
 const EmittersIndexLazyImport = createFileRoute('/emitters/')()
@@ -30,44 +30,44 @@ const AboutIndexLazyImport = createFileRoute('/about/')()
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
 const SkadiIndexLazyRoute = SkadiIndexLazyImport.update({
   path: '/skadi/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any).lazy(() => import('./routes/skadi/index.lazy').then((d) => d.Route))
 
 const RiskInformationSheetIndexLazyRoute =
   RiskInformationSheetIndexLazyImport.update({
     path: '/risk-information-sheet/',
-    getParentRoute: () => rootRoute,
+    getParentRoute: () => rootRoute
   } as any).lazy(() =>
-    import('./routes/risk-information-sheet/index.lazy').then((d) => d.Route),
+    import('./routes/risk-information-sheet/index.lazy').then((d) => d.Route)
   )
 
 const MissionBuilderIndexLazyRoute = MissionBuilderIndexLazyImport.update({
   path: '/mission-builder/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any).lazy(() =>
-  import('./routes/mission-builder/index.lazy').then((d) => d.Route),
+  import('./routes/mission-builder/index.lazy').then((d) => d.Route)
 )
 
 const EmittersIndexLazyRoute = EmittersIndexLazyImport.update({
   path: '/emitters/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any).lazy(() =>
-  import('./routes/emitters/index.lazy').then((d) => d.Route),
+  import('./routes/emitters/index.lazy').then((d) => d.Route)
 )
 
 const AgentsIndexLazyRoute = AgentsIndexLazyImport.update({
   path: '/agents/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any).lazy(() => import('./routes/agents/index.lazy').then((d) => d.Route))
 
 const AboutIndexLazyRoute = AboutIndexLazyImport.update({
   path: '/about/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any).lazy(() => import('./routes/about/index.lazy').then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
@@ -207,7 +207,7 @@ const rootRouteChildren: RootRouteChildren = {
   EmittersIndexLazyRoute: EmittersIndexLazyRoute,
   MissionBuilderIndexLazyRoute: MissionBuilderIndexLazyRoute,
   RiskInformationSheetIndexLazyRoute: RiskInformationSheetIndexLazyRoute,
-  SkadiIndexLazyRoute: SkadiIndexLazyRoute,
+  SkadiIndexLazyRoute: SkadiIndexLazyRoute
 }
 
 export const routeTree = rootRoute
