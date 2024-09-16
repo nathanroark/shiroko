@@ -1,3 +1,4 @@
+'use server'
 import { createLazyFileRoute } from '@tanstack/react-router'
 import { api } from '@libs'
 import { useQuery } from '@tanstack/react-query'
@@ -16,7 +17,8 @@ function About() {
   })
 
   if (isLoading) return <></> // TODO: Add a loading spinner
-  if (error) return <div>Ooopsie woopsie! Something went wrong...</div>
+  if (error) return <div>Something went wrong...</div>
+
   if (!data) return <div>Nothing to see here...</div>
 
   const { id, name, series, picture, developer } = data
