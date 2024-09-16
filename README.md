@@ -6,6 +6,8 @@
   - Server
     - Elysia
     - Eden
+    - Prisma
+    - PostgreSQL
   - Web
     - React
     - Tanstack Router
