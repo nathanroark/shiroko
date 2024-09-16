@@ -18,7 +18,6 @@ function About() {
 
   if (isLoading) return <></> // TODO: Add a loading spinner
   if (error) return <div>Something went wrong...</div>
-
   if (!data) return <div>Nothing to see here...</div>
 
   const { id, name, series, picture, developer } = data
