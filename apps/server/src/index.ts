@@ -5,7 +5,6 @@ import { nendoroidRoutes } from '@server/routes/nendoroid'
 import { authRoutes } from '@server/routes/auth'
 import { trackRoutes } from '@server/routes/tracks'
 import { animeRoutes } from '@server/routes/shiroko'
-import { websocketRoute } from '@server/routes/websocket'
 import cors from '@elysiajs/cors'
 
 export const app = new Elysia()
@@ -15,7 +14,6 @@ export const app = new Elysia()
   .use(authRoutes)
   .use(trackRoutes)
   .use(animeRoutes)
-  .use(websocketRoute)
   .get('/', 'ok')
   .use(
     staticPlugin({

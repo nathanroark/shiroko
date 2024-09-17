@@ -18,6 +18,7 @@ model Location {
   name      String
   latitude  Float
   longitude Float
+  color     String
   createdAt DateTime @default(now())
 
   @@index([latitude, longitude], map: "location_coordinates_idx") // Index for geospatial queries

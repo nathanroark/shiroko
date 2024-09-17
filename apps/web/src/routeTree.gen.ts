@@ -17,9 +17,10 @@ import { Route as rootRoute } from './routes/__root'
 // Create Virtual Routes
 
 const IndexLazyImport = createFileRoute('/')()
+const TracksIndexLazyImport = createFileRoute('/tracks/')()
 const SkadiIndexLazyImport = createFileRoute('/skadi/')()
 const RiskInformationSheetIndexLazyImport = createFileRoute(
-  '/risk-information-sheet/'
+  '/risk-information-sheet/',
 )()
 const MissionBuilderIndexLazyImport = createFileRoute('/mission-builder/')()
 const EmittersIndexLazyImport = createFileRoute('/emitters/')()
@@ -30,44 +31,49 @@ const AboutIndexLazyImport = createFileRoute('/about/')()
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const TracksIndexLazyRoute = TracksIndexLazyImport.update({
+  path: '/tracks/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/tracks/index.lazy').then((d) => d.Route))
 
 const SkadiIndexLazyRoute = SkadiIndexLazyImport.update({
   path: '/skadi/',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/skadi/index.lazy').then((d) => d.Route))
 
 const RiskInformationSheetIndexLazyRoute =
   RiskInformationSheetIndexLazyImport.update({
     path: '/risk-information-sheet/',
-    getParentRoute: () => rootRoute
+    getParentRoute: () => rootRoute,
   } as any).lazy(() =>
-    import('./routes/risk-information-sheet/index.lazy').then((d) => d.Route)
+    import('./routes/risk-information-sheet/index.lazy').then((d) => d.Route),
   )
 
 const MissionBuilderIndexLazyRoute = MissionBuilderIndexLazyImport.update({
   path: '/mission-builder/',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any).lazy(() =>
-  import('./routes/mission-builder/index.lazy').then((d) => d.Route)
+  import('./routes/mission-builder/index.lazy').then((d) => d.Route),
 )
 
 const EmittersIndexLazyRoute = EmittersIndexLazyImport.update({
   path: '/emitters/',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any).lazy(() =>
-  import('./routes/emitters/index.lazy').then((d) => d.Route)
+  import('./routes/emitters/index.lazy').then((d) => d.Route),
 )
 
 const AgentsIndexLazyRoute = AgentsIndexLazyImport.update({
   path: '/agents/',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/agents/index.lazy').then((d) => d.Route))
 
 const AboutIndexLazyRoute = AboutIndexLazyImport.update({
   path: '/about/',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/about/index.lazy').then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
@@ -123,6 +129,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SkadiIndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/tracks/': {
+      id: '/tracks/'
+      path: '/tracks'
+      fullPath: '/tracks'
+      preLoaderRoute: typeof TracksIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -136,6 +149,7 @@ export interface FileRoutesByFullPath {
   '/mission-builder': typeof MissionBuilderIndexLazyRoute
   '/risk-information-sheet': typeof RiskInformationSheetIndexLazyRoute
   '/skadi': typeof SkadiIndexLazyRoute
+  '/tracks': typeof TracksIndexLazyRoute
 }
 
 export interface FileRoutesByTo {
@@ -146,6 +160,7 @@ export interface FileRoutesByTo {
   '/mission-builder': typeof MissionBuilderIndexLazyRoute
   '/risk-information-sheet': typeof RiskInformationSheetIndexLazyRoute
   '/skadi': typeof SkadiIndexLazyRoute
+  '/tracks': typeof TracksIndexLazyRoute
 }
 
 export interface FileRoutesById {
@@ -157,6 +172,7 @@ export interface FileRoutesById {
   '/mission-builder/': typeof MissionBuilderIndexLazyRoute
   '/risk-information-sheet/': typeof RiskInformationSheetIndexLazyRoute
   '/skadi/': typeof SkadiIndexLazyRoute
+  '/tracks/': typeof TracksIndexLazyRoute
 }
 
 export interface FileRouteTypes {
@@ -169,6 +185,7 @@ export interface FileRouteTypes {
     | '/mission-builder'
     | '/risk-information-sheet'
     | '/skadi'
+    | '/tracks'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -178,6 +195,7 @@ export interface FileRouteTypes {
     | '/mission-builder'
     | '/risk-information-sheet'
     | '/skadi'
+    | '/tracks'
   id:
     | '__root__'
     | '/'
@@ -187,6 +205,7 @@ export interface FileRouteTypes {
     | '/mission-builder/'
     | '/risk-information-sheet/'
     | '/skadi/'
+    | '/tracks/'
   fileRoutesById: FileRoutesById
 }
 
@@ -198,6 +217,7 @@ export interface RootRouteChildren {
   MissionBuilderIndexLazyRoute: typeof MissionBuilderIndexLazyRoute
   RiskInformationSheetIndexLazyRoute: typeof RiskInformationSheetIndexLazyRoute
   SkadiIndexLazyRoute: typeof SkadiIndexLazyRoute
+  TracksIndexLazyRoute: typeof TracksIndexLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -207,7 +227,8 @@ const rootRouteChildren: RootRouteChildren = {
   EmittersIndexLazyRoute: EmittersIndexLazyRoute,
   MissionBuilderIndexLazyRoute: MissionBuilderIndexLazyRoute,
   RiskInformationSheetIndexLazyRoute: RiskInformationSheetIndexLazyRoute,
-  SkadiIndexLazyRoute: SkadiIndexLazyRoute
+  SkadiIndexLazyRoute: SkadiIndexLazyRoute,
+  TracksIndexLazyRoute: TracksIndexLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -228,7 +249,8 @@ export const routeTree = rootRoute
         "/emitters/",
         "/mission-builder/",
         "/risk-information-sheet/",
-        "/skadi/"
+        "/skadi/",
+        "/tracks/"
       ]
     },
     "/": {
@@ -251,6 +273,9 @@ export const routeTree = rootRoute
     },
     "/skadi/": {
       "filePath": "skadi/index.lazy.tsx"
+    },
+    "/tracks/": {
+      "filePath": "tracks/index.lazy.tsx"
     }
   }
 }
